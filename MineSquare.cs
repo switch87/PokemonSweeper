@@ -7,9 +7,9 @@ using System.Windows.Controls;
 
 namespace MineSweeper1
 {
-    public class MineSquare :  Button
+    public class MineSquare //:  Button
     {
-        enum SquareStatus
+        public enum SquareStatus
         {
             Cleared,
             Mine,
@@ -81,9 +81,9 @@ namespace MineSweeper1
             get
             {
                 int mines = 0;
-                foreach (MineSquare Square in (List<MineSquare>)(Field.Squares.Where
-                    (s => (s.Row > this.Row-1) && (s.Row < this.Row+1) && 
-                    (s.Column > this.Column-1) && (s.Column < this.Column+1))
+                foreach (MineSquare Square in (Field.Squares.Where
+                    (s => (s.Row >= this.Row-1) && (s.Row <= this.Row+1) && 
+                    (s.Column >= this.Column-1) && (s.Column <= this.Column+1))
                     .ToList()))
                 {
                     if (Square.Mine == true) mines++;

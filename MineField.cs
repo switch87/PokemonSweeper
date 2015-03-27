@@ -63,7 +63,7 @@ namespace MineSweeper1
                 } while (mines.Contains(Mine));
                 mines.Add(Mine);
             }
-
+            Squares = new List<MineSquare>();
             for (int row = 0; row < Rows; row++)
             {
                 for (int column = 0; column < Columns; column++)

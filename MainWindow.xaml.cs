@@ -23,6 +23,15 @@ namespace MineSweeper1
         public MainWindow()
         {
             InitializeComponent();
+            MineField mijnveld = new MineField(256);
+            int count = 0;
+            foreach (MineSquare vakje in mijnveld.Squares)
+            {
+                if (count%Math.Sqrt(256)==0) MyText.Text+="\n";
+                if (vakje.Mine) MyText.Text += "x";
+                else MyText.Text += vakje.Mines.ToString();
+                count++;
+            }
         }
     }
 }

@@ -1,0 +1,13 @@
+G:\cSharp\MineSweeper1\bin\Debug\MineSweeper1.exe.config
+G:\cSharp\MineSweeper1\obj\Debug\MineSweeper1.csprojResolveAssemblyReference.cache
+G:\cSharp\MineSweeper1\obj\Debug\MainWindow.baml
+G:\cSharp\MineSweeper1\obj\Debug\MainWindow.g.cs
+G:\cSharp\MineSweeper1\obj\Debug\App.g.cs
+G:\cSharp\MineSweeper1\obj\Debug\MineSweeper1_MarkupCompile.cache
+G:\cSharp\MineSweeper1\obj\Debug\MineSweeper1.g.resources
+G:\cSharp\MineSweeper1\obj\Debug\MineSweeper1.Properties.Resources.resources
+G:\cSharp\MineSweeper1\obj\Debug\MineSweeper1.csproj.GenerateResource.Cache
+G:\cSharp\MineSweeper1\bin\Debug\MineSweeper1.exe
+G:\cSharp\MineSweeper1\bin\Debug\MineSweeper1.pdb
+G:\cSharp\MineSweeper1\obj\Debug\MineSweeper1.exe
+G:\cSharp\MineSweeper1\obj\Debug\MineSweeper1.pdb
