@@ -7,7 +7,7 @@ using System.Windows.Controls;
 
 namespace MineSweeper1
 {
-    public class MineSquare //:  Button
+    public class MineSquare :  Button
     {
         public enum SquareStatus
         {
