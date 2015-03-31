@@ -53,13 +53,33 @@ namespace MineSweeper1
             if (knopje.Status == MineSquare.SquareStatus.Open)
             {
                 knopje.Status = MineSquare.SquareStatus.Flagged;
-                knopje.Content = "!";
-                knopje.Foreground = Brushes.Red;
-                knopje.FontWeight = FontWeights.Bold;
+                knopje.Content = new Image { Source = new BitmapImage(new Uri(@"images/pokeball.png", UriKind.Relative)) };
+                //knopje.Content = "!";
+                //knopje.Foreground = Brushes.Red;
+                //knopje.FontWeight = FontWeights.Bold;
+                List<MineSquare> FlaggedSqaures = mijnveld.Squares.Where(square => square.Status == MineSquare.SquareStatus.Flagged).ToList();
+                if (FlaggedSqaures.Count() == mijnveld.Mines)
+                {
+                    bool win = true;
+                    foreach (MineSquare flaggedSquare in FlaggedSqaures)
+                    {
+                        if (flaggedSquare.Mine == false)
+                        {
+                            win = false;
+                        }
+                    }
+                    if (win)
+                    {
+                        MessageBox.Show("Gewonnen");
+                        NewGame();
+                    }
+                    
+                }
             }
             else if (knopje.Status == MineSquare.SquareStatus.Flagged)
             {
                 knopje.Status = MineSquare.SquareStatus.Question;
+                //knopje.Content = new Image { Source = new BitmapImage(new Uri(@"images/question.png", UriKind.Relative)) };
                 knopje.Content = "?";
                 knopje.Foreground = Brushes.Blue;
                 knopje.FontWeight = FontWeights.Bold;
@@ -90,13 +110,26 @@ namespace MineSweeper1
         {
             if (knopje.Mine)
             {
-                knopje.Content = "boe";
+                Random Pokeselect= new Random();
+                
+                int PokeNumberInt = Pokeselect.Next(385) + 1;
+                string PokeNumber = PokeNumberInt.ToString();
+                if (PokeNumberInt/100 < 1)
+                {
+                    if (PokeNumberInt/10 < 1)
+                    {
+                        PokeNumber = "0" + PokeNumber;
+                    }
+                    PokeNumber = "0" + PokeNumber;
+                }
+                PokeNumber = @"images/pokemon/" + PokeNumber + ".png";
+                knopje.Content = new Image { Source = new BitmapImage(new Uri(@PokeNumber, UriKind.Relative)) };
                 knopje.Status = MineSquare.SquareStatus.Mine;
                 knopje.Background = Brushes.Red;
                 knopje.BorderBrush = Brushes.Red;
                 knopje.IsEnabled = false;
 
-                MessageBox.Show("Game Over");
+                MessageBox.Show("One Escaped!!");
                 NewGame();
 
             }
