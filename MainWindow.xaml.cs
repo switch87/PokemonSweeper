@@ -32,11 +32,13 @@ namespace MineSweeper1
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            NewGame();
+        }
+
+        private void NewGame()
+        {
+            MineFieldGrid.Children.Clear();
             mijnveld = new MineField(81);
-
-            
-
-            int count = 0;
             foreach (MineSquare vakje in mijnveld.Squares)
             {
                 vakje.Click += vakje_Click;
@@ -66,15 +68,22 @@ namespace MineSweeper1
             {
                 knopje.Status = MineSquare.SquareStatus.Open;
                 knopje.Content = "";
+                knopje.Foreground = Brushes.Gray;
+                knopje.FontWeight = FontWeights.Normal;
             }
         }
 
         void vakje_Click(object sender, RoutedEventArgs e)
         {
-            OntmijnKnopje ((MineSquare)sender);
-            
-            //
-            
+            if (((MineSquare)sender).Status == MineSquare.SquareStatus.Open)
+            {
+                OntmijnKnopje((MineSquare)sender);
+                if (mijnveld.ClearedSquares+mijnveld.Mines==mijnveld.Dimention)
+                {
+                    MessageBox.Show("Gewonnen");
+                    NewGame();
+                }
+            }
         }
 
         public void OntmijnKnopje(MineSquare knopje)
@@ -86,6 +95,9 @@ namespace MineSweeper1
                 knopje.Background = Brushes.Red;
                 knopje.BorderBrush = Brushes.Red;
                 knopje.IsEnabled = false;
+
+                MessageBox.Show("Game Over");
+                NewGame();
 
             }
             else if (knopje.Mines > 0)
