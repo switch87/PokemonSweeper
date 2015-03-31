@@ -69,6 +69,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MineField.cs" />
+    <Compile Include="Pokemon.cs" />
+    <Compile Include="PokemonList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
