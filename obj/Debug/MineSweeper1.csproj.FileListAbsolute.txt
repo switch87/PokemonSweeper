@@ -11,3 +11,16 @@ G:\cSharp\MineSweeper1\bin\Debug\MineSweeper1.exe
 G:\cSharp\MineSweeper1\bin\Debug\MineSweeper1.pdb
 G:\cSharp\MineSweeper1\obj\Debug\MineSweeper1.exe
 G:\cSharp\MineSweeper1\obj\Debug\MineSweeper1.pdb
+C:\Users\net04\workspace\Minesweeper-C-Sharp\bin\Debug\MineSweeper1.exe.config
+C:\Users\net04\workspace\Minesweeper-C-Sharp\obj\Debug\MineSweeper1.exe
+C:\Users\net04\workspace\Minesweeper-C-Sharp\obj\Debug\MineSweeper1.pdb
+C:\Users\net04\workspace\Minesweeper-C-Sharp\bin\Debug\MineSweeper1.exe
+C:\Users\net04\workspace\Minesweeper-C-Sharp\bin\Debug\MineSweeper1.pdb
+C:\Users\net04\workspace\Minesweeper-C-Sharp\obj\Debug\MineSweeper1.csprojResolveAssemblyReference.cache
+C:\Users\net04\workspace\Minesweeper-C-Sharp\obj\Debug\MainWindow.baml
+C:\Users\net04\workspace\Minesweeper-C-Sharp\obj\Debug\MainWindow.g.cs
+C:\Users\net04\workspace\Minesweeper-C-Sharp\obj\Debug\App.g.cs
+C:\Users\net04\workspace\Minesweeper-C-Sharp\obj\Debug\MineSweeper1_MarkupCompile.cache
+C:\Users\net04\workspace\Minesweeper-C-Sharp\obj\Debug\MineSweeper1.g.resources
+C:\Users\net04\workspace\Minesweeper-C-Sharp\obj\Debug\MineSweeper1.Properties.Resources.resources
+C:\Users\net04\workspace\Minesweeper-C-Sharp\obj\Debug\MineSweeper1.csproj.GenerateResource.Cache

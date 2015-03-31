@@ -25,12 +25,18 @@ namespace MineSweeper1
 
         public int Columns
         {
-            get { return (int)Math.Sqrt(Dimention); }
+            get 
+            { 
+                return (int)Math.Sqrt(Dimention); 
+            }
         }
 
         public int Rows
         {
-            get { return (int)Math.Sqrt(Dimention);  }
+            get 
+            { 
+                return (int)Math.Sqrt(Dimention);  
+            }
         }
 
         public int? Mines
@@ -73,6 +79,12 @@ namespace MineSweeper1
                 }
             }
         }
+
+        public  int ClearedSquares
+        {
+            get { return Squares.Where(Square => Square.Status == MineSquare.SquareStatus.Cleared).Count(); }
+        }
+        
 
         public MineField(int dimention)
         {
