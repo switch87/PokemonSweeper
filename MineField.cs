@@ -9,7 +9,7 @@ namespace MineSweeper1
 
     public class MineField
     {
-        private int[] ValidDimentions = {81 /*Beginner*/, 256 /*Intermediate*/, 480 /*Expert*/};
+        private static int[] ValidDimentions = {81 /*Beginner*/, 256 /*Intermediate*/, 480 /*Expert*/};
 
         private int dimentionValue;
 
@@ -91,5 +91,7 @@ namespace MineSweeper1
             Dimention = dimention;
             this.PopulateField();
         }
+
+        
     }
 }
