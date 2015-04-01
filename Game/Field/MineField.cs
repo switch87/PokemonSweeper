@@ -91,12 +91,24 @@ namespace PokemonSweeper.Game.Field
         {
             get { return Squares.Where(Square => Square.Status == MineSquare.SquareStatus.Cleared).Count(); }
         }
+
+        public  System.Diagnostics.Stopwatch Timer;
+
+        private int nrOfClicksValue;
+
+        public int NrOfClicks
+        {
+            get { return nrOfClicksValue; }
+            set { nrOfClicksValue = value; }
+        }
         
 
         public MineField(int dimention)
         {
             Dimention = dimention;
             this.PopulateField();
+            Timer = System.Diagnostics.Stopwatch.StartNew();
+            NrOfClicks = 0;
         }
 
         

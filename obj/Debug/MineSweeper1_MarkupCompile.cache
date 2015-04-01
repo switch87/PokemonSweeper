@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\net04\workspace\Minesweeper-C-Sharp\App.xaml
-3130810631
+32007924421
 
-111169174525
+12389353522
 12-1401562060
-Game\Messages\FailMessage.xaml;Game\Messages\Score.xaml;MainWindow.xaml;
+Game\Messages\FailMessage.xaml;Game\Messages\Score.xaml;GameWindow.xaml;
 
 False
 

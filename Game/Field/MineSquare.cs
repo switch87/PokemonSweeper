@@ -116,10 +116,7 @@ namespace PokemonSweeper.Game.Field
             if (Status == SquareStatus.Open)
             {
                 Status = SquareStatus.Flagged;
-                Content = new Image { Source = new BitmapImage(new Uri(@"Game/images/pokeball.png", UriKind.Relative)) };
-                //Content = "!";
-                //Foreground = Brushes.Red;
-                //FontWeight = FontWeights.Bold;
+                Content = new Image { Source = new BitmapImage(new Uri(@"/Game/images/pokeball.png", UriKind.Relative)) };
                 List<MineSquare> FlaggedSqaures = Field.Squares.Where(square => square.Status == MineSquare.SquareStatus.Flagged).ToList();
                 if (FlaggedSqaures.Count() == Field.NrOfPokemon)
                 {
@@ -138,7 +135,6 @@ namespace PokemonSweeper.Game.Field
             else if (Status == SquareStatus.Flagged)
             {
                 Status = SquareStatus.Question;
-                //knopje.Content = new Image { Source = new BitmapImage(new Uri(@"images/question.png", UriKind.Relative)) };
                 Content = "?";
                 Foreground = Brushes.Blue;
                 FontWeight = FontWeights.Bold;
@@ -164,27 +160,10 @@ namespace PokemonSweeper.Game.Field
 
         public void Unmine(GameWindow sender)
         {
+            this.Field.NrOfClicks++;
             if (Pokemon != null)
             {
 
-                /* selecteer een Pokemon
-                 * Deze code moet nog aangepast met klasse pokemonLocation voor verdere uitbreiding mogelijk te maken
-                 */
-                //Random Pokeselect = new Random();
-
-                //int PokeNumberInt = Pokeselect.Next(385) + 1;
-                //string PokeNumber = PokeNumberInt.ToString();
-                //if (PokeNumberInt / 100 < 1)
-                //{
-                //    if (PokeNumberInt / 10 < 1)
-                //    {
-                //        PokeNumber = "0" + PokeNumber;
-                //    }
-                //    PokeNumber = "0" + PokeNumber;
-                //}
-                //PokeNumber = @"images/pokemonLocation/" + PokeNumber + ".png";
-                //Content = new Image { Source = new BitmapImage(new Uri(@PokeNumber, UriKind.Relative)) };
-                // Einde Pokemoncode
                 Content = new Image { Source = Pokemon.Picture};
                 Status = MineSquare.SquareStatus.Mine;
                 Background = Brushes.Red;
@@ -196,8 +175,7 @@ namespace PokemonSweeper.Game.Field
                 Fail.Title = "Game over!";
                 Fail.Owner = sender;
                 Fail.ShowDialog();
-                //MessageBox.Show(Pokemon.Name + " Escaped!!");
-                sender.NewGame(81);
+                sender.NewGame();
 
             }
             else if (Mines > 0)

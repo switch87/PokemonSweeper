@@ -27,9 +27,17 @@ namespace PokemonSweeper.Game.Field.Game.Messages
 
         public static void ShowScore(GameWindow sender, MineField Field)
         {
+            Field.Timer.Stop();
+            List<Pokemon.Pokemon> PokeList = new List<Pokemon.Pokemon>();
             Game.Messages.Score Winner = new Game.Messages.Score();
+
             foreach (MineSquare square in Field.Squares.Where(s => s.Pokemon != null))
+            {
                 Winner.ListBoxPokemon.Items.Add(square.Pokemon);
+                PokeList.Add(square.Pokemon);
+            }
+            int newScore = sender.Game.CalculateNewScore(Field.Timer, Field.NrOfClicks, PokeList);
+            Winner.score.Text = "Goed zo! Je hebt alle Pokemon gevangen!! uw score is " + newScore;
             Winner.Owner = sender;
             Winner.ShowDialog();
             //sender.Close();
@@ -39,7 +47,7 @@ namespace PokemonSweeper.Game.Field.Game.Messages
         private void Next_Click(object sender, RoutedEventArgs e)
         {
             GameWindow OwnerWindow = ((GameWindow)Owner);
-            OwnerWindow.NewGame(256);
+            OwnerWindow.NewGame();
             this.Close();
 
         }
