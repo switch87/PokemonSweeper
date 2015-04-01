@@ -42,7 +42,6 @@ namespace PokemonSweeper.Game.Field.Pokemon
                     }
                     number = "0" + number;
                 }
-                //return "Game/images/pokemon/" + number + ".png";
                 return new BitmapImage(new Uri(@"/Game/images/pokemon/" + number + ".png", UriKind.Relative));
             }
         }

@@ -19,20 +19,37 @@ namespace PokemonSweeper.Game.Field.Game.Messages
     /// </summary>
     public partial class Score : Window
     {
+
         public Score()
         {
             InitializeComponent();
         }
 
-        public static void ShowScore(MainWindow sender, MineField Field)
+        public static void ShowScore(GameWindow sender, MineField Field)
         {
-            Game.Messages.Score End = new Game.Messages.Score();
+            Field.Timer.Stop();
+            List<Pokemon.Pokemon> PokeList = new List<Pokemon.Pokemon>();
+            Game.Messages.Score Winner = new Game.Messages.Score();
+
             foreach (MineSquare square in Field.Squares.Where(s => s.Pokemon != null))
-                End.ListBoxPokemon.Items.Add(square.Pokemon);
-            End.Owner = sender;
-            End.ShowDialog();
+            {
+                Winner.ListBoxPokemon.Items.Add(square.Pokemon);
+                PokeList.Add(square.Pokemon);
+            }
+            int newScore = sender.Game.CalculateNewScore(Field.Timer, Field.NrOfClicks, PokeList);
+            Winner.score.Text = "Goed zo! Je hebt alle Pokemon gevangen!! uw score is " + newScore;
+            Winner.Owner = sender;
+            Winner.ShowDialog();
+            //sender.Close();
             //MessageBox.Show("Gewonnen");
-            sender.NewGame();
+        }
+
+        private void Next_Click(object sender, RoutedEventArgs e)
+        {
+            GameWindow OwnerWindow = ((GameWindow)Owner);
+            OwnerWindow.NewGame();
+            this.Close();
+
         }
     }
 }

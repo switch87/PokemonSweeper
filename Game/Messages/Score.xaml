@@ -11,7 +11,7 @@
         <Grid.ColumnDefinitions>
             
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="0" Grid.Row="0" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">Goed zo! Je hebt alle Pokemon gevangen!!</TextBlock>
+        <TextBlock Name="score" Grid.Column="0" Grid.Row="0" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">Goed zo! Je hebt alle Pokemon gevangen!!</TextBlock>
         <ListBox Grid.Column="0" Grid.Row="1" Name="ListBoxPokemon" DockPanel.Dock="Top" Height="100" Margin="10">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -29,6 +29,8 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+
+        <Button Name="Next" Grid.Column="0" Grid.Row="2" Width="75" VerticalAlignment="Stretch"  HorizontalAlignment="Right" Click="Next_Click">Next Level >></Button>
 
     </Grid>
 </Window>

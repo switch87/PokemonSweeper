@@ -61,7 +61,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="GameWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -70,14 +70,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Game\Field\MineSquare.cs" />
+    <Compile Include="Game\Game.cs" />
     <Compile Include="Game\Messages\FailMessage.xaml.cs">
       <DependentUpon>FailMessage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Game\Messages\Score.xaml.cs">
       <DependentUpon>Score.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="GameWindow.xaml.cs">
+      <DependentUpon>GameWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
