@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\net04\workspace\Minesweeper-C-Sharp\obj\Debug\
-MineSweeper1
+G:\cSharp\MineSweeper1\obj\Debug\
+PokemonSweeper.Game.Field
 none
 false
 DEBUG;TRACE
-C:\Users\net04\workspace\Minesweeper-C-Sharp\App.xaml
-11151548125
+G:\cSharp\MineSweeper1\App.xaml
+2-1081991025
 
-13-866258414
+141828516308
 12-1401562060
-MainWindow.xaml;
+Game\Messages\Window1.xaml;MainWindow.xaml;
 
 False
 
