@@ -15,18 +15,19 @@ using System.Windows.Shapes;
 namespace PokemonSweeper.Game.Field.Game.Messages
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for FailMessage.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class FailMessage : Window
     {
-        public Window1()
+        public FailMessage()
         {
             InitializeComponent();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void retry_Click(object sender, RoutedEventArgs e)
         {
-            this.Focus();
+            this.Close();
         }
+
     }
 }

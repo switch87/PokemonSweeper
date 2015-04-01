@@ -30,7 +30,7 @@ namespace PokemonSweeper.Game.Field.Pokemon
 
 
 
-        public Image Picture
+        public BitmapImage Picture
         {
             get {
                 string number = Number+"";
@@ -43,7 +43,7 @@ namespace PokemonSweeper.Game.Field.Pokemon
                     number = "0" + number;
                 }
                 //return "Game/images/pokemon/" + number + ".png";
-                return new Image { Source = new BitmapImage(new Uri(@"Game/images/pokemon/" + number + ".png", UriKind.Relative)) };
+                return new BitmapImage(new Uri(@"/Game/images/pokemon/" + number + ".png", UriKind.Relative));
             }
         }
         

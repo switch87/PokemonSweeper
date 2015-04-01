@@ -1,0 +1,34 @@
+﻿<Window x:Class="PokemonSweeper.Game.Field.Game.Messages.Score"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Score" Height="247" Width="716">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="120"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" Grid.Row="0" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">Goed zo! Je hebt alle Pokemon gevangen!!</TextBlock>
+        <ListBox Grid.Column="0" Grid.Row="1" Name="ListBoxPokemon" DockPanel.Dock="Top" Height="100" Margin="10">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"></StackPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Black" BorderThickness="1" Width="70">
+                        <StackPanel>
+                            <Image Source="{Binding Path=Picture}" Stretch="Fill" Height="50" Width="50"></Image>
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=Name}"></TextBlock>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+    </Grid>
+</Window>
