@@ -36,8 +36,12 @@ namespace PokemonSweeper.Game.Field.Game
         public int CalculateNewScore(System.Diagnostics.Stopwatch timer, int clicks, List<Field.Pokemon.Pokemon> pokemon)
         {
             int newPokemon = 0;
-            foreach (Field.Pokemon.Pokemon monster in pokemon.Where(m => Pokemon.Contains(m))) newPokemon++;
-            return (int)((newPokemon * 10000 + 1000 - clicks) / (timer.Elapsed.TotalSeconds + clicks));
+            foreach (Field.Pokemon.Pokemon monster in pokemon.Where(m => !Pokemon.Contains(m))) newPokemon++;
+
+            int newScore = (int)((newPokemon * 100 + (100 - clicks) / (timer.Elapsed.TotalSeconds/2)));
+            this.Score += newScore;
+            if (Score > 1000) Level = 2;
+            return newScore;
         }
 
         public PokeSweepGame()
