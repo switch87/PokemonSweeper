@@ -1,0 +1,14 @@
+﻿<Window x:Class="PokemonSweeper.Game.Field.Game.Messages.Score"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Score" Height="288" Width="509">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            
+        </Grid.ColumnDefinitions>
+
+    </Grid>
+</Window>

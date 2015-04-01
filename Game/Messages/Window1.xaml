@@ -1,7 +1,0 @@
-﻿<Window x:Class="PokemonSweeper.Game.Field.Game.Messages.Window1"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Window1" Height="219" Width="541" Loaded="Window_Loaded">
-    <StackPanel Name="Stack" Orientation="Horizontal">
-    </StackPanel>
-</Window>

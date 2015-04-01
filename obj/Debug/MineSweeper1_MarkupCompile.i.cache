@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-G:\cSharp\MineSweeper1\obj\Debug\
+C:\Users\net04\workspace\Minesweeper-C-Sharp\obj\Debug\
 PokemonSweeper.Game.Field
 none
 false
 DEBUG;TRACE
-G:\cSharp\MineSweeper1\App.xaml
-2-1081991025
+C:\Users\net04\workspace\Minesweeper-C-Sharp\App.xaml
+3130810631
 
-141828516308
+151659319559
 12-1401562060
-Game\Messages\Window1.xaml;MainWindow.xaml;
+Game\Messages\FailMessage.xaml;Game\Messages\Score.xaml;MainWindow.xaml;
 
 False
 

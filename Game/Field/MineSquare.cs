@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using PokemonSweeper.Game.Field.Pokemon;
+using System.Drawing;
 
 namespace PokemonSweeper.Game.Field
 {
@@ -192,12 +193,18 @@ namespace PokemonSweeper.Game.Field
                 //PokeNumber = @"images/pokemonLocation/" + PokeNumber + ".png";
                 //Content = new Image { Source = new BitmapImage(new Uri(@PokeNumber, UriKind.Relative)) };
                 // Einde Pokemoncode
-                Content = Pokemon.Picture;
+                Content = new Image { Source = Pokemon.Picture};
                 Status = MineSquare.SquareStatus.Mine;
                 Background = Brushes.Red;
                 BorderBrush = Brushes.Red;
                 IsEnabled = false;
-                MessageBox.Show(Pokemon.Name + " Escaped!!");
+                Game.Messages.FailMessage Fail = new Game.Messages.FailMessage();
+                Fail.EscapedPokemon.Source = Pokemon.Picture;
+                Fail.Message.Text = Pokemon.Number + " - " + Pokemon.Name + " managed to escape!";
+                Fail.Title = "Game over!";
+                Fail.Owner = sender;
+                Fail.ShowDialog();
+                //MessageBox.Show(Pokemon.Name + " Escaped!!");
                 sender.NewGame();
 
             }
