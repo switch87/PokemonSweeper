@@ -16,26 +16,29 @@ using System.Windows.Shapes;
 namespace PokemonSweeper.Game.Field
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for GameWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class GameWindow : Window
     {
 
         public MineField mijnveld;
-        public MainWindow()
+        public GameWindow()
         {
             InitializeComponent();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            NewGame();
+            NewGame(81);
         }
 
-        public void NewGame()
+        public void NewGame(int dimention)
         {
             MineFieldGrid.Children.Clear();
-            mijnveld = new MineField(81);
+            
+            mijnveld = new MineField(dimention);
+            MineFieldGrid.Rows = mijnveld.Rows;
+            MineFieldGrid.Columns = mijnveld.Columns;
             foreach (MineSquare vakje in mijnveld.Squares)
             {
                 vakje.Click += MineSquare_Click;

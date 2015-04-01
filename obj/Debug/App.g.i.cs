@@ -47,7 +47,7 @@ namespace PokemonSweeper.Game.Field {
         public void InitializeComponent() {
             
             #line 4 "..\..\App.xaml"
-            this.StartupUri = new System.Uri("MainWindow.xaml", System.UriKind.Relative);
+            this.StartupUri = new System.Uri("GameWindow.xaml", System.UriKind.Relative);
             
             #line default
             #line hidden

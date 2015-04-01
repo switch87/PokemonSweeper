@@ -30,5 +30,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
+        <Button Name="Next" Grid.Column="0" Grid.Row="2" Width="75" VerticalAlignment="Stretch"  HorizontalAlignment="Right" Click="Next_Click">Next Level >></Button>
+
     </Grid>
 </Window>

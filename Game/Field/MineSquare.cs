@@ -110,7 +110,7 @@ namespace PokemonSweeper.Game.Field
             Status = SquareStatus.Open;
         }
 
-        public void RightButton(MainWindow sender)
+        public void RightButton(GameWindow sender)
         {
             
             if (Status == SquareStatus.Open)
@@ -152,7 +152,7 @@ namespace PokemonSweeper.Game.Field
             }
         }
 
-        public void LeftButton(MainWindow sender)
+        public void LeftButton(GameWindow sender)
         {
             
             if (Status == SquareStatus.Open)
@@ -162,7 +162,7 @@ namespace PokemonSweeper.Game.Field
             }
         }
 
-        public void Unmine(MainWindow sender)
+        public void Unmine(GameWindow sender)
         {
             if (Pokemon != null)
             {
@@ -197,7 +197,7 @@ namespace PokemonSweeper.Game.Field
                 Fail.Owner = sender;
                 Fail.ShowDialog();
                 //MessageBox.Show(Pokemon.Name + " Escaped!!");
-                sender.NewGame();
+                sender.NewGame(81);
 
             }
             else if (Mines > 0)
