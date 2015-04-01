@@ -23,5 +23,16 @@ namespace PokemonSweeper.Game.Field.Game.Messages
         {
             InitializeComponent();
         }
+
+        public static void ShowScore(MainWindow sender, MineField Field)
+        {
+            Game.Messages.Score End = new Game.Messages.Score();
+            foreach (MineSquare square in Field.Squares.Where(s => s.Pokemon != null))
+                End.ListBoxPokemon.Items.Add(square.Pokemon);
+            End.Owner = sender;
+            End.ShowDialog();
+            //MessageBox.Show("Gewonnen");
+            sender.NewGame();
+        }
     }
 }

@@ -131,11 +131,7 @@ namespace PokemonSweeper.Game.Field
                             win = false;
                         }
                     }
-                    if (win)
-                    {
-                        MessageBox.Show("Gewonnen");
-                        sender.NewGame();
-                    }
+                    if (win) Game.Messages.Score.ShowScore(sender, Field);
 
                 }
             }
@@ -162,11 +158,7 @@ namespace PokemonSweeper.Game.Field
             if (Status == SquareStatus.Open)
             {
                 Unmine(sender);
-                if (Field.ClearedSquares + Field.NrOfPokemon == Field.Dimention)
-                {
-                    MessageBox.Show("Gewonnen");
-                    sender.NewGame();
-                }
+                if (Field.ClearedSquares + Field.NrOfPokemon == Field.Dimention) Game.Messages.Score.ShowScore(sender, Field);
             }
         }
 
@@ -227,9 +219,6 @@ namespace PokemonSweeper.Game.Field
                     (s.Column >= Column - 1) && (s.Column <= Column + 1) && (s.Status == MineSquare.SquareStatus.Open))
                     .ToList()))
                     OtherSquare.Unmine(sender);
-                {
-
-                }
             }
         }
         
