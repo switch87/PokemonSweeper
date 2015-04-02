@@ -6,10 +6,6 @@ using System.Threading.Tasks;
 
 namespace PokemonSweeper.Game.Field.Game.Field
 {
-    /* FieldLevel
-     * defenition of the levels.
-     */
-
     public class FieldLevel
     {
         public int Dimention                // Dimention = Rows * Columns

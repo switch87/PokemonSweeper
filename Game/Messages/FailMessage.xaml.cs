@@ -24,6 +24,17 @@ namespace PokemonSweeper.Game.Field.Game.Messages
             InitializeComponent();
         }
 
+        public static void ShowMessage(GameWindow window, Pokemon.Pokemon pokemon )
+        {
+            Game.Messages.FailMessage Fail = new Game.Messages.FailMessage();
+            Fail.EscapedPokemon.Source = pokemon.Picture;
+            Fail.Message.Text = pokemon.Number + " - " + pokemon.Name + " managed to escape!";
+            Fail.Title = "Game over!";
+            Fail.Owner = window;
+            Fail.ShowDialog();
+            window.Game.NewField( window );
+        }
+
         private void retry_Click( object sender, RoutedEventArgs e )
         {
             this.Close();

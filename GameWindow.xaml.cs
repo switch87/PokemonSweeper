@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace PokemonSweeper.Game.Field
 {
-    /// <summary>
-    /// Interaction logic for GameWindow.xaml
-    /// </summary>
     public partial class GameWindow : Window
     {
         private Game.PokeSweepGame gameValue;
@@ -43,12 +40,12 @@ namespace PokemonSweeper.Game.Field
 
         public void MineSquare_MouseRightButtonDown( object sender, MouseButtonEventArgs e )
         {
-            ( (MineSquare)sender ).RightButton( this );
+            ( (Square)sender ).RightButton( this );
         }
 
         public void MineSquare_Click( object sender, RoutedEventArgs e )
         {
-            ( (MineSquare)sender ).LeftButton( this );
+            ( (Square)sender ).LeftButton( this );
 
         }
     }

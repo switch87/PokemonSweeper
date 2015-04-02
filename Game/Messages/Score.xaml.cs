@@ -25,13 +25,13 @@ namespace PokemonSweeper.Game.Field.Game.Messages
             InitializeComponent();
         }
 
-        public static void ShowScore( GameWindow sender, MineField Field )
+        public static void ShowScore( GameWindow sender, Field Field )
         {
             Field.Timer.Stop();
             List<Pokemon.Pokemon> PokeList = new List<Pokemon.Pokemon>();
             Game.Messages.Score Winner = new Game.Messages.Score();
 
-            foreach ( MineSquare square in Field.Squares.Where( s => s.Pokemon != null ) )
+            foreach ( Square square in Field.Squares.Where( s => s.Pokemon != null ) )
             {
                 Winner.ListBoxPokemon.Items.Add( square.Pokemon );
                 PokeList.Add( square.Pokemon );

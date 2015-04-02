@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace PokemonSweeper.Game.Field
 {
-
-
-    public class MineField
+    public class Field
     {
         private Random Random = new Random();
 
@@ -38,9 +36,9 @@ namespace PokemonSweeper.Game.Field
             }
         }
 
-        private List<MineSquare> squaresValue;
+        private List<Square> squaresValue;
 
-        public List<MineSquare> Squares { get { return squaresValue; } set { squaresValue = value; } }
+        public List<Square> Squares { get { return squaresValue; } set { squaresValue = value; } }
 
         private void PopulateField( int nrOfPokemon, int openSquares, GameWindow window )
         {
@@ -56,12 +54,12 @@ namespace PokemonSweeper.Game.Field
                 } while ( pokemonPlacers.Contains( pokemonLocation ) );
                 pokemonPlacers.Add( pokemonLocation );
             }
-            Squares = new List<MineSquare>();
+            Squares = new List<Square>();
             for ( int row = 0; row < Rows; row++ )
             {
                 for ( int column = 0; column < Columns; column++ )
                 {
-                    Squares.Add( new MineSquare( this, Rows, Columns, row, column ) );
+                    Squares.Add( new Square( this, Rows, Columns, row, column ) );
                     if ( pokemonPlacers.Contains( Squares.Count - 1 ) )
                     {
                         Squares[Squares.Count - 1].Pokemon = new Pokemon.Pokemon { Type = (Pokemon.PokemonList)Random.Next( 1, 386 ) };
@@ -75,15 +73,15 @@ namespace PokemonSweeper.Game.Field
                 do
                 {
                     openLocation = Random.Next( Rows * Columns );
-                } while ( pokemonPlacers.Contains( openLocation ) || Squares[openLocation].Status == MineSquare.SquareStatus.Cleared );
-                Squares[openLocation].Status = MineSquare.SquareStatus.Cleared;
-                Squares[openLocation].Unmine(window);
+                } while ( pokemonPlacers.Contains( openLocation ) || Squares[openLocation].Status == Square.SquareStatus.Cleared );
+                Squares[openLocation].Status = Square.SquareStatus.Cleared;
+                Squares[openLocation].SwipeSquare(window);
             }
         }
 
         public int ClearedSquares
         {
-            get { return Squares.Where( Square => Square.Status == MineSquare.SquareStatus.Cleared ).Count(); }
+            get { return Squares.Where( Square => Square.Status == Square.SquareStatus.Cleared ).Count(); }
         }
 
         public System.Diagnostics.Stopwatch Timer;
@@ -96,8 +94,7 @@ namespace PokemonSweeper.Game.Field
             set { nrOfClicksValue = value; }
         }
 
-
-        public MineField( int rows, int columns, int nrOfPokemon, int openSquares, GameWindow window)
+        public Field( int rows, int columns, int nrOfPokemon, int openSquares, GameWindow window)
         {
             Rows = rows;
             Columns = columns;
@@ -105,8 +102,6 @@ namespace PokemonSweeper.Game.Field
             Timer = System.Diagnostics.Stopwatch.StartNew();
             NrOfClicks = 0;
         }
-
-
 
     }
 }

@@ -1,0 +1,547 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2B96FE5B-B2E7-45E7-A785-8C74CAB65FB2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PokemonSweeper.Game.Field</RootNamespace>
+    <AssemblyName>MineSweeper1</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Game\Messages\FailMessage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Game\Messages\Score.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Game\Field\FieldLevel.cs" />
+    <Compile Include="Game\Field\Square.cs" />
+    <Compile Include="Game\Game.cs" />
+    <Compile Include="Game\Messages\FailMessage.xaml.cs">
+      <DependentUpon>FailMessage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Game\Messages\Score.xaml.cs">
+      <DependentUpon>Score.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameWindow.xaml.cs">
+      <DependentUpon>GameWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Game\Field\Field.cs" />
+    <Compile Include="Game\Pokemon\Pokemon.cs" />
+    <Compile Include="Game\Pokemon\PokemonList.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\images\pokemon\001.png" />
+    <Resource Include="Game\images\pokemon\002.png" />
+    <Resource Include="Game\images\pokemon\003.png" />
+    <Resource Include="Game\images\pokemon\004.png" />
+    <Resource Include="Game\images\pokemon\005.png" />
+    <Resource Include="Game\images\pokemon\006.png" />
+    <Resource Include="Game\images\pokemon\007.png" />
+    <Resource Include="Game\images\pokemon\008.png" />
+    <Resource Include="Game\images\pokemon\009.png" />
+    <Resource Include="Game\images\pokemon\010.png" />
+    <Resource Include="Game\images\pokemon\011.png" />
+    <Resource Include="Game\images\pokemon\012.png" />
+    <Resource Include="Game\images\pokemon\013.png" />
+    <Resource Include="Game\images\pokemon\014.png" />
+    <Resource Include="Game\images\pokemon\015.png" />
+    <Resource Include="Game\images\pokemon\016.png" />
+    <Resource Include="Game\images\pokemon\017.png" />
+    <Resource Include="Game\images\pokemon\018.png" />
+    <Resource Include="Game\images\pokemon\019.png" />
+    <Resource Include="Game\images\pokemon\020.png" />
+    <Resource Include="Game\images\pokemon\021.png" />
+    <Resource Include="Game\images\pokemon\022.png" />
+    <Resource Include="Game\images\pokemon\023.png" />
+    <Resource Include="Game\images\pokemon\024.png" />
+    <Resource Include="Game\images\pokemon\025.png" />
+    <Resource Include="Game\images\pokemon\026.png" />
+    <Resource Include="Game\images\pokemon\027.png" />
+    <Resource Include="Game\images\pokemon\028.png" />
+    <Resource Include="Game\images\pokemon\029.png" />
+    <Resource Include="Game\images\pokemon\030.png" />
+    <Resource Include="Game\images\pokemon\031.png" />
+    <Resource Include="Game\images\pokemon\032.png" />
+    <Resource Include="Game\images\pokemon\033.png" />
+    <Resource Include="Game\images\pokemon\034.png" />
+    <Resource Include="Game\images\pokemon\035.png" />
+    <Resource Include="Game\images\pokemon\036.png" />
+    <Resource Include="Game\images\pokemon\037.png" />
+    <Resource Include="Game\images\pokemon\038.png" />
+    <Resource Include="Game\images\pokemon\039.png" />
+    <Resource Include="Game\images\pokemon\040.png" />
+    <Resource Include="Game\images\pokemon\041.png" />
+    <Resource Include="Game\images\pokemon\042.png" />
+    <Resource Include="Game\images\pokemon\043.png" />
+    <Resource Include="Game\images\pokemon\044.png" />
+    <Resource Include="Game\images\pokemon\045.png" />
+    <Resource Include="Game\images\pokemon\046.png" />
+    <Resource Include="Game\images\pokemon\047.png" />
+    <Resource Include="Game\images\pokemon\048.png" />
+    <Resource Include="Game\images\pokemon\049.png" />
+    <Resource Include="Game\images\pokemon\050.png" />
+    <Resource Include="Game\images\pokemon\051.png" />
+    <Resource Include="Game\images\pokemon\052.png" />
+    <Resource Include="Game\images\pokemon\053.png" />
+    <Resource Include="Game\images\pokemon\054.png" />
+    <Resource Include="Game\images\pokemon\055.png" />
+    <Resource Include="Game\images\pokemon\056.png" />
+    <Resource Include="Game\images\pokemon\057.png" />
+    <Resource Include="Game\images\pokemon\058.png" />
+    <Resource Include="Game\images\pokemon\059.png" />
+    <Resource Include="Game\images\pokemon\060.png" />
+    <Resource Include="Game\images\pokemon\061.png" />
+    <Resource Include="Game\images\pokemon\062.png" />
+    <Resource Include="Game\images\pokemon\063.png" />
+    <Resource Include="Game\images\pokemon\064.png" />
+    <Resource Include="Game\images\pokemon\065.png" />
+    <Resource Include="Game\images\pokemon\066.png" />
+    <Resource Include="Game\images\pokemon\067.png" />
+    <Resource Include="Game\images\pokemon\068.png" />
+    <Resource Include="Game\images\pokemon\069.png" />
+    <Resource Include="Game\images\pokemon\070.png" />
+    <Resource Include="Game\images\pokemon\071.png" />
+    <Resource Include="Game\images\pokemon\072.png" />
+    <Resource Include="Game\images\pokemon\073.png" />
+    <Resource Include="Game\images\pokemon\074.png" />
+    <Resource Include="Game\images\pokemon\075.png" />
+    <Resource Include="Game\images\pokemon\076.png" />
+    <Resource Include="Game\images\pokemon\077.png" />
+    <Resource Include="Game\images\pokemon\078.png" />
+    <Resource Include="Game\images\pokemon\079.png" />
+    <Resource Include="Game\images\pokemon\080.png" />
+    <Resource Include="Game\images\pokemon\081.png" />
+    <Resource Include="Game\images\pokemon\082.png" />
+    <Resource Include="Game\images\pokemon\083.png" />
+    <Resource Include="Game\images\pokemon\084.png" />
+    <Resource Include="Game\images\pokemon\085.png" />
+    <Resource Include="Game\images\pokemon\086.png" />
+    <Resource Include="Game\images\pokemon\087.png" />
+    <Resource Include="Game\images\pokemon\088.png" />
+    <Resource Include="Game\images\pokemon\089.png" />
+    <Resource Include="Game\images\pokemon\090.png" />
+    <Resource Include="Game\images\pokemon\091.png" />
+    <Resource Include="Game\images\pokemon\092.png" />
+    <Resource Include="Game\images\pokemon\093.png" />
+    <Resource Include="Game\images\pokemon\094.png" />
+    <Resource Include="Game\images\pokemon\095.png" />
+    <Resource Include="Game\images\pokemon\096.png" />
+    <Resource Include="Game\images\pokemon\097.png" />
+    <Resource Include="Game\images\pokemon\098.png" />
+    <Resource Include="Game\images\pokemon\099.png" />
+    <Resource Include="Game\images\pokemon\100.png" />
+    <Resource Include="Game\images\pokemon\101.png" />
+    <Resource Include="Game\images\pokemon\102.png" />
+    <Resource Include="Game\images\pokemon\103.png" />
+    <Resource Include="Game\images\pokemon\104.png" />
+    <Resource Include="Game\images\pokemon\105.png" />
+    <Resource Include="Game\images\pokemon\106.png" />
+    <Resource Include="Game\images\pokemon\107.png" />
+    <Resource Include="Game\images\pokemon\108.png" />
+    <Resource Include="Game\images\pokemon\109.png" />
+    <Resource Include="Game\images\pokemon\110.png" />
+    <Resource Include="Game\images\pokemon\111.png" />
+    <Resource Include="Game\images\pokemon\112.png" />
+    <Resource Include="Game\images\pokemon\113.png" />
+    <Resource Include="Game\images\pokemon\114.png" />
+    <Resource Include="Game\images\pokemon\115.png" />
+    <Resource Include="Game\images\pokemon\116.png" />
+    <Resource Include="Game\images\pokemon\117.png" />
+    <Resource Include="Game\images\pokemon\118.png" />
+    <Resource Include="Game\images\pokemon\119.png" />
+    <Resource Include="Game\images\pokemon\120.png" />
+    <Resource Include="Game\images\pokemon\121.png" />
+    <Resource Include="Game\images\pokemon\122.png" />
+    <Resource Include="Game\images\pokemon\123.png" />
+    <Resource Include="Game\images\pokemon\124.png" />
+    <Resource Include="Game\images\pokemon\125.png" />
+    <Resource Include="Game\images\pokemon\126.png" />
+    <Resource Include="Game\images\pokemon\127.png" />
+    <Resource Include="Game\images\pokemon\128.png" />
+    <Resource Include="Game\images\pokemon\129.png" />
+    <Resource Include="Game\images\pokemon\130.png" />
+    <Resource Include="Game\images\pokemon\131.png" />
+    <Resource Include="Game\images\pokemon\132.png" />
+    <Resource Include="Game\images\pokemon\133.png" />
+    <Resource Include="Game\images\pokemon\134.png" />
+    <Resource Include="Game\images\pokemon\135.png" />
+    <Resource Include="Game\images\pokemon\136.png" />
+    <Resource Include="Game\images\pokemon\137.png" />
+    <Resource Include="Game\images\pokemon\138.png" />
+    <Resource Include="Game\images\pokemon\139.png" />
+    <Resource Include="Game\images\pokemon\140.png" />
+    <Resource Include="Game\images\pokemon\141.png" />
+    <Resource Include="Game\images\pokemon\142.png" />
+    <Resource Include="Game\images\pokemon\143.png" />
+    <Resource Include="Game\images\pokemon\144.png" />
+    <Resource Include="Game\images\pokemon\145.png" />
+    <Resource Include="Game\images\pokemon\146.png" />
+    <Resource Include="Game\images\pokemon\147.png" />
+    <Resource Include="Game\images\pokemon\148.png" />
+    <Resource Include="Game\images\pokemon\149.png" />
+    <Resource Include="Game\images\pokemon\150.png" />
+    <Resource Include="Game\images\pokemon\151.png" />
+    <Resource Include="Game\images\pokemon\152.png" />
+    <Resource Include="Game\images\pokemon\153.png" />
+    <Resource Include="Game\images\pokemon\154.png" />
+    <Resource Include="Game\images\pokemon\155.png" />
+    <Resource Include="Game\images\pokemon\156.png" />
+    <Resource Include="Game\images\pokemon\157.png" />
+    <Resource Include="Game\images\pokemon\158.png" />
+    <Resource Include="Game\images\pokemon\159.png" />
+    <Resource Include="Game\images\pokemon\160.png" />
+    <Resource Include="Game\images\pokemon\161.png" />
+    <Resource Include="Game\images\pokemon\162.png" />
+    <Resource Include="Game\images\pokemon\163.png" />
+    <Resource Include="Game\images\pokemon\164.png" />
+    <Resource Include="Game\images\pokemon\165.png" />
+    <Resource Include="Game\images\pokemon\166.png" />
+    <Resource Include="Game\images\pokemon\167.png" />
+    <Resource Include="Game\images\pokemon\168.png" />
+    <Resource Include="Game\images\pokemon\169.png" />
+    <Resource Include="Game\images\pokemon\170.png" />
+    <Resource Include="Game\images\pokemon\171.png" />
+    <Resource Include="Game\images\pokemon\172.png" />
+    <Resource Include="Game\images\pokemon\173.png" />
+    <Resource Include="Game\images\pokemon\174.png" />
+    <Resource Include="Game\images\pokemon\175.png" />
+    <Resource Include="Game\images\pokemon\176.png" />
+    <Resource Include="Game\images\pokemon\177.png" />
+    <Resource Include="Game\images\pokemon\178.png" />
+    <Resource Include="Game\images\pokemon\179.png" />
+    <Resource Include="Game\images\pokemon\180.png" />
+    <Resource Include="Game\images\pokemon\181.png" />
+    <Resource Include="Game\images\pokemon\182.png" />
+    <Resource Include="Game\images\pokemon\183.png" />
+    <Resource Include="Game\images\pokemon\184.png" />
+    <Resource Include="Game\images\pokemon\185.png" />
+    <Resource Include="Game\images\pokemon\186.png" />
+    <Resource Include="Game\images\pokemon\187.png" />
+    <Resource Include="Game\images\pokemon\188.png" />
+    <Resource Include="Game\images\pokemon\189.png" />
+    <Resource Include="Game\images\pokemon\190.png" />
+    <Resource Include="Game\images\pokemon\191.png" />
+    <Resource Include="Game\images\pokemon\192.png" />
+    <Resource Include="Game\images\pokemon\193.png" />
+    <Resource Include="Game\images\pokemon\194.png" />
+    <Resource Include="Game\images\pokemon\195.png" />
+    <Resource Include="Game\images\pokemon\196.png" />
+    <Resource Include="Game\images\pokemon\197.png" />
+    <Resource Include="Game\images\pokemon\198.png" />
+    <Resource Include="Game\images\pokemon\199.png" />
+    <Resource Include="Game\images\pokemon\200.png" />
+    <Resource Include="Game\images\pokemon\201.png" />
+    <Resource Include="Game\images\pokemon\201a.png" />
+    <Resource Include="Game\images\pokemon\201b.png" />
+    <Resource Include="Game\images\pokemon\201c.png" />
+    <Resource Include="Game\images\pokemon\201e.png" />
+    <Resource Include="Game\images\pokemon\201em.png" />
+    <Resource Include="Game\images\pokemon\201g.png" />
+    <Resource Include="Game\images\pokemon\201h.png" />
+    <Resource Include="Game\images\pokemon\201i.png" />
+    <Resource Include="Game\images\pokemon\201j.png" />
+    <Resource Include="Game\images\pokemon\201k.png" />
+    <Resource Include="Game\images\pokemon\201l.png" />
+    <Resource Include="Game\images\pokemon\201m.png" />
+    <Resource Include="Game\images\pokemon\201n.png" />
+    <Resource Include="Game\images\pokemon\201o.png" />
+    <Resource Include="Game\images\pokemon\201p.png" />
+    <Resource Include="Game\images\pokemon\201q.png" />
+    <Resource Include="Game\images\pokemon\201qm.png" />
+    <Resource Include="Game\images\pokemon\201r.png" />
+    <Resource Include="Game\images\pokemon\201s.png" />
+    <Resource Include="Game\images\pokemon\201t.png" />
+    <Resource Include="Game\images\pokemon\201u.png" />
+    <Resource Include="Game\images\pokemon\201v.png" />
+    <Resource Include="Game\images\pokemon\201w.png" />
+    <Resource Include="Game\images\pokemon\201x.png" />
+    <Resource Include="Game\images\pokemon\201y.png" />
+    <Resource Include="Game\images\pokemon\201z.png" />
+    <Resource Include="Game\images\pokemon\202.png" />
+    <Resource Include="Game\images\pokemon\203.png" />
+    <Resource Include="Game\images\pokemon\204.png" />
+    <Resource Include="Game\images\pokemon\205.png" />
+    <Resource Include="Game\images\pokemon\206.png" />
+    <Resource Include="Game\images\pokemon\207.png" />
+    <Resource Include="Game\images\pokemon\208.png" />
+    <Resource Include="Game\images\pokemon\209.png" />
+    <Resource Include="Game\images\pokemon\210.png" />
+    <Resource Include="Game\images\pokemon\211.png" />
+    <Resource Include="Game\images\pokemon\212.png" />
+    <Resource Include="Game\images\pokemon\213.png" />
+    <Resource Include="Game\images\pokemon\214.png" />
+    <Resource Include="Game\images\pokemon\215.png" />
+    <Resource Include="Game\images\pokemon\216.png" />
+    <Resource Include="Game\images\pokemon\217.png" />
+    <Resource Include="Game\images\pokemon\218.png" />
+    <Resource Include="Game\images\pokemon\219.png" />
+    <Resource Include="Game\images\pokemon\220.png" />
+    <Resource Include="Game\images\pokemon\221.png" />
+    <Resource Include="Game\images\pokemon\222.png" />
+    <Resource Include="Game\images\pokemon\223.png" />
+    <Resource Include="Game\images\pokemon\224.png" />
+    <Resource Include="Game\images\pokemon\225.png" />
+    <Resource Include="Game\images\pokemon\226.png" />
+    <Resource Include="Game\images\pokemon\227.png" />
+    <Resource Include="Game\images\pokemon\228.png" />
+    <Resource Include="Game\images\pokemon\229.png" />
+    <Resource Include="Game\images\pokemon\230.png" />
+    <Resource Include="Game\images\pokemon\231.png" />
+    <Resource Include="Game\images\pokemon\232.png" />
+    <Resource Include="Game\images\pokemon\233.png" />
+    <Resource Include="Game\images\pokemon\234.png" />
+    <Resource Include="Game\images\pokemon\235.png" />
+    <Resource Include="Game\images\pokemon\236.png" />
+    <Resource Include="Game\images\pokemon\237.png" />
+    <Resource Include="Game\images\pokemon\238.png" />
+    <Resource Include="Game\images\pokemon\239.png" />
+    <Resource Include="Game\images\pokemon\240.png" />
+    <Resource Include="Game\images\pokemon\241.png" />
+    <Resource Include="Game\images\pokemon\242.png" />
+    <Resource Include="Game\images\pokemon\243.png" />
+    <Resource Include="Game\images\pokemon\244.png" />
+    <Resource Include="Game\images\pokemon\245.png" />
+    <Resource Include="Game\images\pokemon\246.png" />
+    <Resource Include="Game\images\pokemon\247.png" />
+    <Resource Include="Game\images\pokemon\248.png" />
+    <Resource Include="Game\images\pokemon\249.png" />
+    <Resource Include="Game\images\pokemon\250.png" />
+    <Resource Include="Game\images\pokemon\251.png" />
+    <Resource Include="Game\images\pokemon\252.png" />
+    <Resource Include="Game\images\pokemon\253.png" />
+    <Resource Include="Game\images\pokemon\254.png" />
+    <Resource Include="Game\images\pokemon\255.png" />
+    <Resource Include="Game\images\pokemon\256.png" />
+    <Resource Include="Game\images\pokemon\257.png" />
+    <Resource Include="Game\images\pokemon\258.png" />
+    <Resource Include="Game\images\pokemon\259.png" />
+    <Resource Include="Game\images\pokemon\260.png" />
+    <Resource Include="Game\images\pokemon\261.png" />
+    <Resource Include="Game\images\pokemon\262.png" />
+    <Resource Include="Game\images\pokemon\263.png" />
+    <Resource Include="Game\images\pokemon\264.png" />
+    <Resource Include="Game\images\pokemon\265.png" />
+    <Resource Include="Game\images\pokemon\266.png" />
+    <Resource Include="Game\images\pokemon\267.png" />
+    <Resource Include="Game\images\pokemon\268.png" />
+    <Resource Include="Game\images\pokemon\269.png" />
+    <Resource Include="Game\images\pokemon\270.png" />
+    <Resource Include="Game\images\pokemon\271.png" />
+    <Resource Include="Game\images\pokemon\272.png" />
+    <Resource Include="Game\images\pokemon\273.png" />
+    <Resource Include="Game\images\pokemon\274.png" />
+    <Resource Include="Game\images\pokemon\275.png" />
+    <Resource Include="Game\images\pokemon\276.png" />
+    <Resource Include="Game\images\pokemon\277.png" />
+    <Resource Include="Game\images\pokemon\278.png" />
+    <Resource Include="Game\images\pokemon\279.png" />
+    <Resource Include="Game\images\pokemon\280.png" />
+    <Resource Include="Game\images\pokemon\281.png" />
+    <Resource Include="Game\images\pokemon\282.png" />
+    <Resource Include="Game\images\pokemon\283.png" />
+    <Resource Include="Game\images\pokemon\284.png" />
+    <Resource Include="Game\images\pokemon\285.png" />
+    <Resource Include="Game\images\pokemon\286.png" />
+    <Resource Include="Game\images\pokemon\287.png" />
+    <Resource Include="Game\images\pokemon\288.png" />
+    <Resource Include="Game\images\pokemon\289.png" />
+    <Resource Include="Game\images\pokemon\290.png" />
+    <Resource Include="Game\images\pokemon\291.png" />
+    <Resource Include="Game\images\pokemon\292.png" />
+    <Resource Include="Game\images\pokemon\293.png" />
+    <Resource Include="Game\images\pokemon\294.png" />
+    <Resource Include="Game\images\pokemon\295.png" />
+    <Resource Include="Game\images\pokemon\296.png" />
+    <Resource Include="Game\images\pokemon\297.png" />
+    <Resource Include="Game\images\pokemon\298.png" />
+    <Resource Include="Game\images\pokemon\299.png" />
+    <Resource Include="Game\images\pokemon\300.png" />
+    <Resource Include="Game\images\pokemon\301.png" />
+    <Resource Include="Game\images\pokemon\302.png" />
+    <Resource Include="Game\images\pokemon\303.png" />
+    <Resource Include="Game\images\pokemon\304.png" />
+    <Resource Include="Game\images\pokemon\305.png" />
+    <Resource Include="Game\images\pokemon\306.png" />
+    <Resource Include="Game\images\pokemon\307.png" />
+    <Resource Include="Game\images\pokemon\308.png" />
+    <Resource Include="Game\images\pokemon\309.png" />
+    <Resource Include="Game\images\pokemon\310.png" />
+    <Resource Include="Game\images\pokemon\311.png" />
+    <Resource Include="Game\images\pokemon\312.png" />
+    <Resource Include="Game\images\pokemon\313.png" />
+    <Resource Include="Game\images\pokemon\314.png" />
+    <Resource Include="Game\images\pokemon\315.png" />
+    <Resource Include="Game\images\pokemon\316.png" />
+    <Resource Include="Game\images\pokemon\317.png" />
+    <Resource Include="Game\images\pokemon\318.png" />
+    <Resource Include="Game\images\pokemon\319.png" />
+    <Resource Include="Game\images\pokemon\320.png" />
+    <Resource Include="Game\images\pokemon\321.png" />
+    <Resource Include="Game\images\pokemon\322.png" />
+    <Resource Include="Game\images\pokemon\323.png" />
+    <Resource Include="Game\images\pokemon\324.png" />
+    <Resource Include="Game\images\pokemon\325.png" />
+    <Resource Include="Game\images\pokemon\326.png" />
+    <Resource Include="Game\images\pokemon\327.png" />
+    <Resource Include="Game\images\pokemon\328.png" />
+    <Resource Include="Game\images\pokemon\329.png" />
+    <Resource Include="Game\images\pokemon\330.png" />
+    <Resource Include="Game\images\pokemon\331.png" />
+    <Resource Include="Game\images\pokemon\332.png" />
+    <Resource Include="Game\images\pokemon\333.png" />
+    <Resource Include="Game\images\pokemon\334.png" />
+    <Resource Include="Game\images\pokemon\335.png" />
+    <Resource Include="Game\images\pokemon\336.png" />
+    <Resource Include="Game\images\pokemon\337.png" />
+    <Resource Include="Game\images\pokemon\338.png" />
+    <Resource Include="Game\images\pokemon\339.png" />
+    <Resource Include="Game\images\pokemon\340.png" />
+    <Resource Include="Game\images\pokemon\341.png" />
+    <Resource Include="Game\images\pokemon\342.png" />
+    <Resource Include="Game\images\pokemon\343.png" />
+    <Resource Include="Game\images\pokemon\344.png" />
+    <Resource Include="Game\images\pokemon\345.png" />
+    <Resource Include="Game\images\pokemon\346.png" />
+    <Resource Include="Game\images\pokemon\347.png" />
+    <Resource Include="Game\images\pokemon\348.png" />
+    <Resource Include="Game\images\pokemon\349.png" />
+    <Resource Include="Game\images\pokemon\350.png" />
+    <Resource Include="Game\images\pokemon\351.png" />
+    <Resource Include="Game\images\pokemon\351fire.png" />
+    <Resource Include="Game\images\pokemon\351ice.png" />
+    <Resource Include="Game\images\pokemon\351water.png" />
+    <Resource Include="Game\images\pokemon\352.png" />
+    <Resource Include="Game\images\pokemon\353.png" />
+    <Resource Include="Game\images\pokemon\354.png" />
+    <Resource Include="Game\images\pokemon\355.png" />
+    <Resource Include="Game\images\pokemon\356.png" />
+    <Resource Include="Game\images\pokemon\357.png" />
+    <Resource Include="Game\images\pokemon\358.png" />
+    <Resource Include="Game\images\pokemon\359.png" />
+    <Resource Include="Game\images\pokemon\360.png" />
+    <Resource Include="Game\images\pokemon\361.png" />
+    <Resource Include="Game\images\pokemon\362.png" />
+    <Resource Include="Game\images\pokemon\363.png" />
+    <Resource Include="Game\images\pokemon\364.png" />
+    <Resource Include="Game\images\pokemon\365.png" />
+    <Resource Include="Game\images\pokemon\366.png" />
+    <Resource Include="Game\images\pokemon\367.png" />
+    <Resource Include="Game\images\pokemon\368.png" />
+    <Resource Include="Game\images\pokemon\369.png" />
+    <Resource Include="Game\images\pokemon\370.png" />
+    <Resource Include="Game\images\pokemon\371.png" />
+    <Resource Include="Game\images\pokemon\372.png" />
+    <Resource Include="Game\images\pokemon\373.png" />
+    <Resource Include="Game\images\pokemon\374.png" />
+    <Resource Include="Game\images\pokemon\375.png" />
+    <Resource Include="Game\images\pokemon\376.png" />
+    <Resource Include="Game\images\pokemon\377.png" />
+    <Resource Include="Game\images\pokemon\378.png" />
+    <Resource Include="Game\images\pokemon\379.png" />
+    <Resource Include="Game\images\pokemon\380.png" />
+    <Resource Include="Game\images\pokemon\381.png" />
+    <Resource Include="Game\images\pokemon\382.png" />
+    <Resource Include="Game\images\pokemon\383.png" />
+    <Resource Include="Game\images\pokemon\384.png" />
+    <Resource Include="Game\images\pokemon\385.png" />
+    <Resource Include="Game\images\pokemon\386.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\images\pokeball.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Game\images\question.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

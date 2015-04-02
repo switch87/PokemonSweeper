@@ -40,9 +40,9 @@ namespace PokemonSweeper.Game.Field.Game
             set { levelValue = value; }
         }
 
-        private MineField fieldValue;
+        private Field fieldValue;
 
-        public MineField Field
+        public Field Field
         {
             get { return fieldValue; }
             set { fieldValue = value; }
@@ -60,8 +60,6 @@ namespace PokemonSweeper.Game.Field.Game
             // Calculate the score and add it to the old score
             int newScore = (int)( ( newPokemon * 100 + ( 100 - clicks ) / ( timer.Elapsed.TotalSeconds / 2 ) ) );
             this.Score += newScore;
-            // level-up controll
-            // if ( Score > FieldLevels[Level].NextLevel ) Level++;
             // Return the field-score
             return newScore;
         }
@@ -89,9 +87,9 @@ namespace PokemonSweeper.Game.Field.Game
             window.MineFieldGrid.Columns = FieldLevels[Level].Columns;
             window.Width = 600 * FieldLevels[Level].Columns / FieldLevels[Level].Rows;
             window.MineFieldGrid.Width = 500 * FieldLevels[Level].Columns / FieldLevels[Level].Rows;
-            Field = new MineField( FieldLevels[Level].Rows, FieldLevels[Level].Columns, FieldLevels[Level].Pokemon, FieldLevels[Level].Open, window);
+            Field = new Field( FieldLevels[Level].Rows, FieldLevels[Level].Columns, FieldLevels[Level].Pokemon, FieldLevels[Level].Open, window);
 
-            foreach ( MineSquare square in Field.Squares )
+            foreach ( Square square in Field.Squares )
             {
                 square.Click += window.MineSquare_Click;
                 square.MouseRightButtonDown += window.MineSquare_MouseRightButtonDown;

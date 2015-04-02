@@ -12,7 +12,7 @@ using System.Drawing;
 
 namespace PokemonSweeper.Game.Field
 {
-    public class MineSquare : Button
+    public class Square : Button
     {
         private Pokemon.Pokemon pokemonValue;
 
@@ -21,7 +21,7 @@ namespace PokemonSweeper.Game.Field
         public enum SquareStatus
         {
             Cleared,
-            Mine,
+            Pokemon,
             Open,
             Flagged,
             Question,
@@ -66,9 +66,9 @@ namespace PokemonSweeper.Game.Field
             set { nrOfRowsValue = value; }
         }
 
-        private MineField fieldValue;
+        private Field fieldValue;
 
-        public MineField Field
+        public Field Field
         {
             get { return fieldValue; }
             set { fieldValue = value; }
@@ -86,7 +86,7 @@ namespace PokemonSweeper.Game.Field
             get
             {
                 int mines = 0;
-                foreach ( MineSquare Square in ( Field.Squares.Where
+                foreach ( Square Square in ( Field.Squares.Where
                     ( s => ( s.Row >= this.Row - 1 ) && ( s.Row <= this.Row + 1 ) &&
                     ( s.Column >= this.Column - 1 ) && ( s.Column <= this.Column + 1 ) )
                     .ToList() ) )
@@ -97,7 +97,7 @@ namespace PokemonSweeper.Game.Field
             }
         }
 
-        public MineSquare( MineField field, int rows, int columns, int row, int column )
+        public Square( Field field, int rows, int columns, int row, int column )
         {
             Field = field;
             NrOfRows = rows;
@@ -115,11 +115,11 @@ namespace PokemonSweeper.Game.Field
             {
                 Status = SquareStatus.Flagged;
                 Content = new Image { Source = new BitmapImage( new Uri( @"/Game/images/pokeball.png", UriKind.Relative ) ) };
-                List<MineSquare> FlaggedSqaures = Field.Squares.Where( square => square.Status == MineSquare.SquareStatus.Flagged ).ToList();
+                List<Square> FlaggedSqaures = Field.Squares.Where( square => square.Status == Square.SquareStatus.Flagged ).ToList();
                 if ( FlaggedSqaures.Count() == sender.Game.FieldLevels[sender.Game.Level].Pokemon )
                 {
                     bool win = true;
-                    foreach ( MineSquare flaggedSquare in FlaggedSqaures )
+                    foreach ( Square flaggedSquare in FlaggedSqaures )
                     {
                         if ( flaggedSquare.Pokemon == null )
                         {
@@ -146,40 +146,34 @@ namespace PokemonSweeper.Game.Field
             }
         }
 
-        public void LeftButton( GameWindow sender )
+        public void LeftButton( GameWindow window )
         {
 
             if ( Status == SquareStatus.Open )
             {
-                Unmine( sender );
-                if ( Field.ClearedSquares + sender.Game.FieldLevels[sender.Game.Level].Pokemon == sender.Game.FieldLevels[sender.Game.Level].Dimention ) Game.Messages.Score.ShowScore( sender, Field );
+                SwipeSquare( window );
+                if ( Field.ClearedSquares + window.Game.FieldLevels[window.Game.Level].Pokemon == window.Game.FieldLevels[window.Game.Level].Dimention ) Game.Messages.Score.ShowScore( window, Field );
             }
         }
 
-        public void Unmine( GameWindow sender )
+        public void SwipeSquare( GameWindow window )
         {
             this.Field.NrOfClicks++;
             if ( Pokemon != null )
             {
 
                 Content = new Image { Source = Pokemon.Picture };
-                Status = MineSquare.SquareStatus.Mine;
+                Status = Square.SquareStatus.Pokemon;
                 Background = Brushes.Red;
                 BorderBrush = Brushes.Red;
                 IsEnabled = false;
-                Game.Messages.FailMessage Fail = new Game.Messages.FailMessage();
-                Fail.EscapedPokemon.Source = Pokemon.Picture;
-                Fail.Message.Text = Pokemon.Number + " - " + Pokemon.Name + " managed to escape!";
-                Fail.Title = "Game over!";
-                Fail.Owner = sender;
-                Fail.ShowDialog();
-                sender.Game.NewField( sender );
+                Game.Messages.FailMessage.ShowMessage( window, Pokemon );
 
             }
             else if ( Mines > 0 )
             {
                 Content = Mines;
-                Status = MineSquare.SquareStatus.Cleared;
+                Status = Square.SquareStatus.Cleared;
                 Background = Brushes.White;
                 BorderBrush = Brushes.White;
                 IsEnabled = false;
@@ -188,16 +182,14 @@ namespace PokemonSweeper.Game.Field
             {
                 Background = Brushes.White;
                 BorderBrush = Brushes.White;
-                Status = MineSquare.SquareStatus.Cleared;
+                Status = Square.SquareStatus.Cleared;
                 IsEnabled = false;
-                foreach ( MineSquare OtherSquare in ( Field.Squares.Where
+                foreach ( Square OtherSquare in ( Field.Squares.Where
                     ( s => ( s.Row >= Row - 1 ) && ( s.Row <= Row + 1 ) &&
-                    ( s.Column >= Column - 1 ) && ( s.Column <= Column + 1 ) && ( s.Status == MineSquare.SquareStatus.Open ) )
+                    ( s.Column >= Column - 1 ) && ( s.Column <= Column + 1 ) && ( s.Status == Square.SquareStatus.Open ) )
                     .ToList() ) )
-                    OtherSquare.Unmine( sender );
+                    OtherSquare.SwipeSquare( window );
             }
         }
-
-
     }
 }
