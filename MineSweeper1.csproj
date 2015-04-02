@@ -69,6 +69,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Game\Field\FieldLevel.cs" />
     <Compile Include="Game\Field\MineSquare.cs" />
     <Compile Include="Game\Game.cs" />
     <Compile Include="Game\Messages\FailMessage.xaml.cs">

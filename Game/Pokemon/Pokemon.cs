@@ -32,20 +32,21 @@ namespace PokemonSweeper.Game.Field.Pokemon
 
         public BitmapImage Picture
         {
-            get {
-                string number = Number+"";
-                if (Number / 100 < 1)
+            get
+            {
+                string number = Number + "";
+                if ( Number / 100 < 1 )
                 {
-                    if (Number / 10 < 1)
+                    if ( Number / 10 < 1 )
                     {
                         number = "0" + number;
                     }
                     number = "0" + number;
                 }
-                return new BitmapImage(new Uri(@"/Game/images/pokemon/" + number + ".png", UriKind.Relative));
+                return new BitmapImage( new Uri( @"/Game/images/pokemon/" + number + ".png", UriKind.Relative ) );
             }
         }
-        
-        
+
+
     }
 }

@@ -27,58 +27,29 @@ namespace PokemonSweeper.Game.Field
             get { return gameValue; }
             set { gameValue = value; }
         }
-        
 
-        public MineField mijnveld;
         public GameWindow()
         {
             InitializeComponent();
             Game = new Game.PokeSweepGame();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Window_Loaded( object sender, RoutedEventArgs e )
         {
-            NewGame();
+            Game.NewField( this );
         }
 
-        public void NewGame()
-        {
-            int dimention;
-            switch (Game.Level)
-            {
-                case 1:
-                    dimention = 81;
-                    break;
-                case 2:
-                    dimention = 256;
-                    break;
-                default:
-                    dimention = 81;
-                    break;
-            }
 
-            MineFieldGrid.Children.Clear();
-            
-            mijnveld = new MineField(dimention);
-            MineFieldGrid.Rows = mijnveld.Rows;
-            MineFieldGrid.Columns = mijnveld.Columns;
-            foreach (MineSquare vakje in mijnveld.Squares)
-            {
-                vakje.Click += MineSquare_Click;
-                vakje.MouseRightButtonDown += MineSquare_MouseRightButtonDown;
-                MineFieldGrid.Children.Add(vakje);
-            }
+
+        public void MineSquare_MouseRightButtonDown( object sender, MouseButtonEventArgs e )
+        {
+            ( (MineSquare)sender ).RightButton( this );
         }
 
-        void MineSquare_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        public void MineSquare_Click( object sender, RoutedEventArgs e )
         {
-            ((MineSquare)sender).RightButton(this);
-        }
+            ( (MineSquare)sender ).LeftButton( this );
 
-        void MineSquare_Click(object sender, RoutedEventArgs e)
-        {
-            ((MineSquare)sender).LeftButton(this);
-            
         }
     }
 }

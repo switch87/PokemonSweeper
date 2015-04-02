@@ -8,6 +8,14 @@ namespace PokemonSweeper.Game.Field.Game
 {
     public class PokeSweepGame
     {
+        private List<Field.FieldLevel> fieldLevelsValue;
+
+        public List<Field.FieldLevel> FieldLevels
+        {
+            get { return fieldLevelsValue; }
+            set { fieldLevelsValue = value; }
+        }
+
         private int scoreValue;
 
         public int Score
@@ -16,9 +24,9 @@ namespace PokemonSweeper.Game.Field.Game
             set { scoreValue = value; }
         }
 
-        private List<Field.Pokemon.Pokemon> pokemonValue;
+        private List<Pokemon.Pokemon> pokemonValue;
 
-        public List<Field.Pokemon.Pokemon> Pokemon
+        public List<Pokemon.Pokemon> Pokemon
         {
             get { return pokemonValue; }
             set { pokemonValue = value; }
@@ -31,26 +39,64 @@ namespace PokemonSweeper.Game.Field.Game
             get { return levelValue; }
             set { levelValue = value; }
         }
-        
 
-        public int CalculateNewScore(System.Diagnostics.Stopwatch timer, int clicks, List<Field.Pokemon.Pokemon> pokemon)
+        private MineField fieldValue;
+
+        public MineField Field
         {
-            int newPokemon = 0;
-            foreach (Field.Pokemon.Pokemon monster in pokemon.Where(m => !Pokemon.Contains(m))) newPokemon++;
+            get { return fieldValue; }
+            set { fieldValue = value; }
+        }
 
-            int newScore = (int)((newPokemon * 100 + (100 - clicks) / (timer.Elapsed.TotalSeconds/2)));
+
+
+        // Calculate the score gained after finishing a field.
+        public int CalculateNewScore( System.Diagnostics.Stopwatch timer, int clicks, List<Pokemon.Pokemon> pokemon )
+        {
+            // count the number of new (never before) catched pokemon.
+            int newPokemon = 0;
+            foreach ( Pokemon.Pokemon monster in pokemon.Where( m => !Pokemon.Contains( m ) ) ) newPokemon++;
+
+            // Calculate the score and add it to the old score
+            int newScore = (int)( ( newPokemon * 100 + ( 100 - clicks ) / ( timer.Elapsed.TotalSeconds / 2 ) ) );
             this.Score += newScore;
-            if (Score > 1000) Level = 2;
+            // level-up controll
+            // if ( Score > FieldLevels[Level].NextLevel ) Level++;
+            // Return the field-score
             return newScore;
         }
 
         public PokeSweepGame()
         {
-            Level = 1;
-            Pokemon = new List<Pokemon.Pokemon>();
+            Level = 0;
             Score = 0;
+            Pokemon = new List<Pokemon.Pokemon>();      // make empty list of Pokemon captured
+
+            FieldLevels = new List<Field.FieldLevel>();                                                                     // Make list of Game Levels
+                                                                                                                            // ------------------------
+            FieldLevels.Add( new Field.FieldLevel { Rows = 9, Columns = 9, Pokemon = 10, NextLevel = 1000 } );              // Beginner standard minesweeper
+            FieldLevels.Add( new Field.FieldLevel { Rows = 16, Columns = 16, Pokemon = 40, NextLevel = 10000 } );           // Intermediate standard minesweeper
+            FieldLevels.Add( new Field.FieldLevel { Rows = 16, Columns = 32, Pokemon = 99, NextLevel = 99999999 } );        // Expert standard minesweeper
         }
-        
-        
+
+        public void NewField( GameWindow window )
+        {
+            window.MineFieldGrid.Children.Clear();
+
+            for ( int i = Level; Score >= FieldLevels[i].NextLevel && i <= FieldLevels.Count(); i++ ) Level++;
+            window.MineFieldGrid.Rows = FieldLevels[Level].Rows;
+            window.MineFieldGrid.Columns = FieldLevels[Level].Columns;
+            window.Width = 600 * FieldLevels[Level].Columns / FieldLevels[Level].Rows;
+            window.MineFieldGrid.Width = 500 * FieldLevels[Level].Columns / FieldLevels[Level].Rows;
+            Field = new MineField( FieldLevels[Level].Rows, FieldLevels[Level].Columns, FieldLevels[Level].Pokemon );
+
+            foreach ( MineSquare square in Field.Squares )
+            {
+                square.Click += window.MineSquare_Click;
+                square.MouseRightButtonDown += window.MineSquare_MouseRightButtonDown;
+                window.MineFieldGrid.Children.Add( square );
+            }
+        }
+
     }
 }

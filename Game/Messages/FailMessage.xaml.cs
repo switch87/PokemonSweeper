@@ -24,7 +24,7 @@ namespace PokemonSweeper.Game.Field.Game.Messages
             InitializeComponent();
         }
 
-        private void retry_Click(object sender, RoutedEventArgs e)
+        private void retry_Click( object sender, RoutedEventArgs e )
         {
             this.Close();
         }
