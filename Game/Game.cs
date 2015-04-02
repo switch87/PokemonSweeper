@@ -76,7 +76,8 @@ namespace PokemonSweeper.Game.Field.Game
                                                                                                                             // ------------------------
             FieldLevels.Add( new Field.FieldLevel { Rows = 9, Columns = 9, Pokemon = 10, NextLevel = 1000 } );              // Beginner standard minesweeper
             FieldLevels.Add( new Field.FieldLevel { Rows = 16, Columns = 16, Pokemon = 40, NextLevel = 10000 } );           // Intermediate standard minesweeper
-            FieldLevels.Add( new Field.FieldLevel { Rows = 16, Columns = 32, Pokemon = 99, NextLevel = 99999999 } );        // Expert standard minesweeper
+            FieldLevels.Add( new Field.FieldLevel { Rows = 16, Columns = 32, Pokemon = 99, NextLevel = 20000 } );           // Expert standard minesweeper
+            FieldLevels.Add( new Field.FieldLevel { Rows = 16, Columns = 16, Pokemon = 70, NextLevel = 99999999, Open=50} ); 
         }
 
         public void NewField( GameWindow window )
@@ -88,7 +89,7 @@ namespace PokemonSweeper.Game.Field.Game
             window.MineFieldGrid.Columns = FieldLevels[Level].Columns;
             window.Width = 600 * FieldLevels[Level].Columns / FieldLevels[Level].Rows;
             window.MineFieldGrid.Width = 500 * FieldLevels[Level].Columns / FieldLevels[Level].Rows;
-            Field = new MineField( FieldLevels[Level].Rows, FieldLevels[Level].Columns, FieldLevels[Level].Pokemon );
+            Field = new MineField( FieldLevels[Level].Rows, FieldLevels[Level].Columns, FieldLevels[Level].Pokemon, FieldLevels[Level].Open, window);
 
             foreach ( MineSquare square in Field.Squares )
             {

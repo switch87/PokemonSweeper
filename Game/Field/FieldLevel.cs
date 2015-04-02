@@ -60,5 +60,7 @@ namespace PokemonSweeper.Game.Field.Game.Field
 
 
 
+
+        public int Open { get; set; }
     }
 }
