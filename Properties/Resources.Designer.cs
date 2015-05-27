@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PokemonSweeper.Game.Field.Properties {
+namespace PokemonSweeper.Properties {
     using System;
     
     

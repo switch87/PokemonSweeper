@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PokemonSweeper.Game.Field.Pokemon
+﻿namespace PokemonSweeper.Game.Pokemon
 {
     public enum PokemonList
     {
@@ -727,6 +721,6 @@ namespace PokemonSweeper.Game.Field.Pokemon
         Yveltal = 717,
         Zygarde = 718,
         Diancie = 719,
-        Hoopa = 720,
+        Hoopa = 720
     }
 }

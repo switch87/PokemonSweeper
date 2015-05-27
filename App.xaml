@@ -1,4 +1,4 @@
-﻿<Application x:Class="PokemonSweeper.Game.Field.App"
+﻿<Application x:Class="PokemonSweeper.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="GameWindow.xaml">

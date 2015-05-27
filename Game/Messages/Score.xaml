@@ -1,4 +1,4 @@
-﻿<Window x:Class="PokemonSweeper.Game.Field.Game.Messages.Score"
+﻿<Window x:Class="PokemonSweeper.Game.Messages.Score"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Score" Height="247" Width="716">

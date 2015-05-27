@@ -1,0 +1,17 @@
+C:\Users\net04\workspace\PokemonSweeper\bin\Debug\MineSweeper1.exe.config
+C:\Users\net04\workspace\PokemonSweeper\obj\Debug\MineSweeper1.exe
+C:\Users\net04\workspace\PokemonSweeper\obj\Debug\MineSweeper1.pdb
+C:\Users\net04\workspace\PokemonSweeper\obj\Debug\PokemonSweeper.csprojResolveAssemblyReference.cache
+C:\Users\net04\workspace\PokemonSweeper\obj\Debug\Game\Messages\FailMessage.baml
+C:\Users\net04\workspace\PokemonSweeper\obj\Debug\Game\Messages\Score.baml
+C:\Users\net04\workspace\PokemonSweeper\obj\Debug\GameWindow.baml
+C:\Users\net04\workspace\PokemonSweeper\obj\Debug\Game\Messages\FailMessage.g.cs
+C:\Users\net04\workspace\PokemonSweeper\obj\Debug\Game\Messages\Score.g.cs
+C:\Users\net04\workspace\PokemonSweeper\obj\Debug\GameWindow.g.cs
+C:\Users\net04\workspace\PokemonSweeper\obj\Debug\App.g.cs
+C:\Users\net04\workspace\PokemonSweeper\obj\Debug\MineSweeper1_MarkupCompile.cache
+C:\Users\net04\workspace\PokemonSweeper\obj\Debug\MineSweeper1.g.resources
+C:\Users\net04\workspace\PokemonSweeper\obj\Debug\PokemonSweeper.Game.Field.Properties.Resources.resources
+C:\Users\net04\workspace\PokemonSweeper\obj\Debug\PokemonSweeper.csproj.GenerateResource.Cache
+C:\Users\net04\workspace\PokemonSweeper\bin\Debug\MineSweeper1.exe
+C:\Users\net04\workspace\PokemonSweeper\bin\Debug\MineSweeper1.pdb

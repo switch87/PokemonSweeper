@@ -1,103 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using PokemonSweeper.Game.Field.Pokemon;
-using System.Drawing;
+using PokemonSweeper.Game.Messages;
+using PokemonSweeper.Game.Pokemon;
 
-namespace PokemonSweeper.Game.Field
+namespace PokemonSweeper
 {
     public class Square : Button
     {
-        private Pokemon.Pokemon pokemonValue;
-
-
-
         public enum SquareStatus
         {
             Cleared,
             Pokemon,
             Open,
             Flagged,
-            Question,
+            Question
         }
 
-        private SquareStatus statusValue;
-
-        public SquareStatus Status
-        {
-            get { return statusValue; }
-            set { statusValue = value; }
-        }
-
-
-        private int rowValue;
-
-        public int Row
-        {
-            get { return rowValue; }
-            set { rowValue = value; }
-        }
-
-        private int columnValue;
-
-        public int Column
-        {
-            get { return columnValue; }
-            set { columnValue = value; }
-        }
-
-        private int nrOfRowsValue;
-
-        public int NrOfRows
-        {
-            get { return nrOfRowsValue; }
-            set { nrOfRowsValue = value; }
-        }
-
-        public int NrOfColumns
-        {
-            get { return nrOfRowsValue; }
-            set { nrOfRowsValue = value; }
-        }
-
-        private Field fieldValue;
-
-        public Field Field
-        {
-            get { return fieldValue; }
-            set { fieldValue = value; }
-        }
-
-        public Pokemon.Pokemon Pokemon
-        {
-            get { return pokemonValue; }
-            set { pokemonValue = value; }
-        }
-
-
-        public int Mines
-        {
-            get
-            {
-                int mines = 0;
-                foreach ( Square Square in ( Field.Squares.Where
-                    ( s => ( s.Row >= this.Row - 1 ) && ( s.Row <= this.Row + 1 ) &&
-                    ( s.Column >= this.Column - 1 ) && ( s.Column <= this.Column + 1 ) )
-                    .ToList() ) )
-                {
-                    if ( Square.Pokemon != null ) mines++;
-                }
-                return mines;
-            }
-        }
-
-        public Square( Field field, int rows, int columns, int row, int column )
+        public Square(Field field, int rows, int columns, int row, int column)
         {
             Field = field;
             NrOfRows = rows;
@@ -108,29 +31,57 @@ namespace PokemonSweeper.Game.Field
             Status = SquareStatus.Open;
         }
 
-        public void RightButton( GameWindow sender )
-        {
+        public SquareStatus Status { get; set; }
+        public int Row { get; set; }
+        public int Column { get; set; }
+        public int NrOfRows { get; set; }
 
-            if ( Status == SquareStatus.Open )
+        public int NrOfColumns
+        {
+            get { return NrOfRows; }
+            set { NrOfRows = value; }
+        }
+
+        public Field Field { get; set; }
+        public Pokemon Pokemon { get; set; }
+
+        public int Mines
+        {
+            get
+            {
+                var mines = 0;
+                foreach (var Square in (Field.Squares.Where
+                    (s => (s.Row >= Row - 1) && (s.Row <= Row + 1) &&
+                          (s.Column >= Column - 1) && (s.Column <= Column + 1))
+                    .ToList()))
+                {
+                    if (Square.Pokemon != null) mines++;
+                }
+                return mines;
+            }
+        }
+
+        public void RightButton(GameWindow sender)
+        {
+            if (Status == SquareStatus.Open)
             {
                 Status = SquareStatus.Flagged;
-                Content = new Image { Source = new BitmapImage( new Uri( @"/Game/images/pokeball.png", UriKind.Relative ) ) };
-                List<Square> FlaggedSqaures = Field.Squares.Where( square => square.Status == Square.SquareStatus.Flagged ).ToList();
-                if ( FlaggedSqaures.Count() == sender.Game.FieldLevels[sender.Game.Level].Pokemon )
+                Content = new Image {Source = new BitmapImage(new Uri(@"/Game/images/pokeball.png", UriKind.Relative))};
+                var FlaggedSqaures = Field.Squares.Where(square => square.Status == SquareStatus.Flagged).ToList();
+                if (FlaggedSqaures.Count() == sender.Game.FieldLevels[sender.Game.Level].Pokemon)
                 {
-                    bool win = true;
-                    foreach ( Square flaggedSquare in FlaggedSqaures )
+                    var win = true;
+                    foreach (var flaggedSquare in FlaggedSqaures)
                     {
-                        if ( flaggedSquare.Pokemon == null )
+                        if (flaggedSquare.Pokemon == null)
                         {
                             win = false;
                         }
                     }
-                    if ( win ) Game.Messages.Score.ShowScore( sender, Field );
-
+                    if (win) Score.ShowScore(sender, Field);
                 }
             }
-            else if ( Status == SquareStatus.Flagged )
+            else if (Status == SquareStatus.Flagged)
             {
                 Status = SquareStatus.Question;
                 Content = "?";
@@ -146,34 +97,32 @@ namespace PokemonSweeper.Game.Field
             }
         }
 
-        public void LeftButton( GameWindow window )
+        public void LeftButton(GameWindow window)
         {
-
-            if ( Status == SquareStatus.Open )
+            if (Status == SquareStatus.Open)
             {
-                SwipeSquare( window );
-                if ( Field.ClearedSquares + window.Game.FieldLevels[window.Game.Level].Pokemon == window.Game.FieldLevels[window.Game.Level].Dimention ) Game.Messages.Score.ShowScore( window, Field );
+                SwipeSquare(window);
+                if (Field.ClearedSquares + window.Game.FieldLevels[window.Game.Level].Pokemon ==
+                    window.Game.FieldLevels[window.Game.Level].Dimention) Score.ShowScore(window, Field);
             }
         }
 
-        public void SwipeSquare( GameWindow window )
+        public void SwipeSquare(GameWindow window)
         {
-            this.Field.NrOfClicks++;
-            if ( Pokemon != null )
+            Field.NrOfClicks++;
+            if (Pokemon != null)
             {
-
-                Content = new Image { Source = Pokemon.Picture };
-                Status = Square.SquareStatus.Pokemon;
+                Content = new Image {Source = Pokemon.Picture};
+                Status = SquareStatus.Pokemon;
                 Background = Brushes.Red;
                 BorderBrush = Brushes.Red;
                 IsEnabled = false;
-                Game.Messages.FailMessage.ShowMessage( window, Pokemon );
-
+                FailMessage.ShowMessage(window, Pokemon);
             }
-            else if ( Mines > 0 )
+            else if (Mines > 0)
             {
                 Content = Mines;
-                Status = Square.SquareStatus.Cleared;
+                Status = SquareStatus.Cleared;
                 Background = Brushes.White;
                 BorderBrush = Brushes.White;
                 IsEnabled = false;
@@ -182,13 +131,13 @@ namespace PokemonSweeper.Game.Field
             {
                 Background = Brushes.White;
                 BorderBrush = Brushes.White;
-                Status = Square.SquareStatus.Cleared;
+                Status = SquareStatus.Cleared;
                 IsEnabled = false;
-                foreach ( Square OtherSquare in ( Field.Squares.Where
-                    ( s => ( s.Row >= Row - 1 ) && ( s.Row <= Row + 1 ) &&
-                    ( s.Column >= Column - 1 ) && ( s.Column <= Column + 1 ) && ( s.Status == Square.SquareStatus.Open ) )
-                    .ToList() ) )
-                    OtherSquare.SwipeSquare( window );
+                foreach (var OtherSquare in (Field.Squares.Where
+                    (s => (s.Row >= Row - 1) && (s.Row <= Row + 1) &&
+                          (s.Column >= Column - 1) && (s.Column <= Column + 1) && (s.Status == SquareStatus.Open))
+                    .ToList()))
+                    OtherSquare.SwipeSquare(window);
             }
         }
     }
