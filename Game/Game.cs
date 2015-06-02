@@ -62,6 +62,7 @@ namespace PokemonSweeper.Game
                 square.MouseRightButtonDown += window.MineSquare_MouseRightButtonDown;
                 window.MineFieldGrid.Children.Add(square);
             }
+            window.MinesLeftLabel( FieldLevels[Level].Pokemon );
         }
     }
 }

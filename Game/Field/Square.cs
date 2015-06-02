@@ -6,6 +6,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using PokemonSweeper.Game.Messages;
 using PokemonSweeper.Game.Pokemon;
+using System.Windows.Documents;
+using System.Collections.Generic;
 
 namespace PokemonSweeper
 {
@@ -63,15 +65,17 @@ namespace PokemonSweeper
 
         public void RightButton(GameWindow sender)
         {
+            List<Square> FlaggedSquares;
             if (Status == SquareStatus.Open)
             {
                 Status = SquareStatus.Flagged;
                 Content = new Image {Source = new BitmapImage(new Uri(@"/Game/images/pokeball.png", UriKind.Relative))};
-                var FlaggedSqaures = Field.Squares.Where(square => square.Status == SquareStatus.Flagged).ToList();
-                if (FlaggedSqaures.Count() == sender.Game.FieldLevels[sender.Game.Level].Pokemon)
+                FlaggedSquares = Field.Squares.Where( square => square.Status == SquareStatus.Flagged ).ToList();
+                sender.MinesLeftLabel( sender.Game.FieldLevels[sender.Game.Level].Pokemon - FlaggedSquares.Count() );
+                if (FlaggedSquares.Count() == sender.Game.FieldLevels[sender.Game.Level].Pokemon)
                 {
                     var win = true;
-                    foreach (var flaggedSquare in FlaggedSqaures)
+                    foreach (var flaggedSquare in FlaggedSquares)
                     {
                         if (flaggedSquare.Pokemon == null)
                         {
@@ -87,6 +91,8 @@ namespace PokemonSweeper
                 Content = "?";
                 Foreground = Brushes.Blue;
                 FontWeight = FontWeights.Bold;
+                FlaggedSquares = Field.Squares.Where( square => square.Status == SquareStatus.Flagged ).ToList();
+                sender.MinesLeftLabel( sender.Game.FieldLevels[sender.Game.Level].Pokemon - FlaggedSquares.Count() );
             }
             else
             {
@@ -95,6 +101,7 @@ namespace PokemonSweeper
                 Foreground = Brushes.Gray;
                 FontWeight = FontWeights.Normal;
             }
+            
         }
 
         public void LeftButton(GameWindow window)

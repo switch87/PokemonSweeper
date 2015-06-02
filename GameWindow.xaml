@@ -2,9 +2,9 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="PokemonSweeper.GameWindow"
-        Title="Pokemon Sweeper" Width="600" Height="600" Loaded="Window_Loaded">
-    <DockPanel>
-        <Menu Height="24" x:Name="MenuBalk" DockPanel.Dock="Top"/>
+        Title="Pokemon Sweeper" Width="527.957" Height="609.678" Loaded="Window_Loaded">
+    <DockPanel Margin="0,0,2,1">
         <UniformGrid x:Name="MineFieldGrid" Columns="9" Rows="9" Height="500" Width="500" DockPanel.Dock="Top"/>
+        <Label Name="MinesLeft" Content="" Height="44" VerticalAlignment="Top" Width="104" HorizontalAlignment="Left" Margin="20"/>
     </DockPanel>
 </Window>

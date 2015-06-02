@@ -28,5 +28,10 @@ namespace PokemonSweeper
         {
             ((Square) sender).LeftButton(this);
         }
+
+        public void MinesLeftLabel(int count)
+        {
+            MinesLeft.Content = "Pokebals: " + count;
+        }
     }
 }
